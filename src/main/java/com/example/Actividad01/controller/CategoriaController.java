@@ -3,6 +3,7 @@ package com.example.Actividad01.controller;
 import com.example.Actividad01.entity.Categoria;
 import com.example.Actividad01.service.service.CategoriaService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,4 +19,9 @@ public class CategoriaController {
     public Iterable<Categoria> getCategorias(){
         return categoriaService.readAll();
     }
+    @GetMapping("/{id}")
+    public Categoria getIdCategorias(@PathVariable Long id){
+        return categoriaService.read(id).get();
+    }
+
 }
